@@ -9,9 +9,9 @@ app.AppView = Backbone.View.extend({
   statsTemplate: _.template( $('#stats-template').html ),
 
   events: {
-    'keypress #new-todo'     : 'createOnEnter',
-    'click #clear-completed' : 'clearCompleted',
-    'click #toggle-all'      : 'toggleAllComplete'
+    'keypress #new-todo'        : 'createOnEnter',
+    'click    #clear-completed' : 'clearCompleted',
+    'click    #toggle-all'      : 'toggleAllComplete'
   },
 
   // At initialization we bind to the relevant events on the 'Todos'
@@ -90,7 +90,7 @@ app.AppView = Backbone.View.extend({
   },
 
   // If you hit enter in the main input filed, create a new todo model
-  createOnEnter: function() {
+  createOnEnter: function(event) {
     if( event.which !== ENTER_KEY || !this.$input.val().trim() ) {
       return;
     }
