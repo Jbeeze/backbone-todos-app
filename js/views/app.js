@@ -4,23 +4,23 @@ var app = app || {};
 // ----------------
 
 app.AppView = Backbone.View.extend({
-  el: '#todoapp',
+  el: '.todoapp',
 
   statsTemplate: _.template( $('#stats-template').html() ),
 
   events: {
-    'keypress #new-todo'        : 'createOnEnter',
-    'click    #clear-completed' : 'clearCompleted',
-    'click    #toggle-all'      : 'toggleAllComplete'
+    'keypress .new-todo'        : 'createOnEnter',
+    'click    .clear-completed' : 'clearCompleted',
+    'click    .toggle-all'      : 'toggleAllComplete'
   },
 
   // At initialization we bind to the relevant events on the 'Todos'
   // collection, when items are added or changed.
   initialize: function() {
-    this.allCheckbox = this.$('#toggle-all')[0];
-    this.$input      = this.$('#new-todo');
-    this.$footer     = this.$('#footer');
-    this.$main       = this.$('#main');
+    this.allCheckbox = this.$('.toggle-all')[0];
+    this.$input      = this.$('.new-todo');
+    this.$footer     = this.$('.footer');
+    this.$main       = this.$('.main');
 
     this.listenTo(app.Todos, 'add', this.addOne);
     this.listenTo(app.Todos, 'reset', this.addAll);
@@ -45,7 +45,7 @@ app.AppView = Backbone.View.extend({
         remaining: remaining
       }));
 
-      this.$('#filters li a')
+      this.$('.filters li a')
         .removeClass('selected')
         .filter('[href="#/' + ( app.TodoFilter || '' ) + '"]')
         .addClass('selected');
@@ -63,12 +63,12 @@ app.AppView = Backbone.View.extend({
 
   addOne: function(todo) {
     var view = new app.TodoView( {model: todo} );
-    $('#todo-list').append( view.render().el );
+    $('.todo-list').append( view.render().el );
   },
 
   // Add all items in the Todos colleciton at once
   addAll: function() {
-    this.$('#todo-list').html('');
+    this.$('.todo-list').html('');
     app.Todos.each(this.addOne, this);
   },
 
