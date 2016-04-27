@@ -72,8 +72,8 @@ app.AppView = Backbone.View.extend({
     app.Todos.each(this.addOne, this);
   },
 
-  filterOne: function() {
-    Todo.trigger('visible');
+  filterOne: function(todo) {
+    todo.trigger('visible');
   },
 
   filterAll: function() {
