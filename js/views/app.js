@@ -6,7 +6,7 @@ var app = app || {};
 app.AppView = Backbone.View.extend({
   el: '#todoapp',
 
-  statsTemplate: _.template( $('#stats-template').html ),
+  statsTemplate: _.template( $('#stats-template').html() ),
 
   events: {
     'keypress #new-todo'        : 'createOnEnter',
@@ -56,7 +56,7 @@ app.AppView = Backbone.View.extend({
     }
 
     this.allCheckbox.checked = !remaining;
-  }
+  },
 
   // Add a single todo item to the list by creating a view for it,
   // and appending its element to the <ul>
