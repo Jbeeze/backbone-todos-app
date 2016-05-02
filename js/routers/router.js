@@ -6,13 +6,17 @@ var Workspace = Backbone.Router.extend({
   },
 
   setFilter: function(param) {
-    if(param) {
-      param = param.trim();
-    }
-    app.TodoFilter = param || '';
+  //   if(param) {
+  //     param = param.trim();
+  //   }
+  //   app.TodoFilter = param || '';
+  //
+  //   app.Todos.trigger('filter');
+  // }
 
-    app.Todos.trigger('filter');
-  }
+  window.app.TodoFilter = param.trim() || '';
+
+  window.app.Todos.trigger('filter');
 });
 
 app.TodoRouter = new Workspace();
